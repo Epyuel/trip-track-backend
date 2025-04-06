@@ -29,7 +29,7 @@ with open(firebase_credentials_path, 'r') as f:
 # Initialize the Firebase Admin SDK
 cred = credentials.Certificate(firebase_credentials)
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://trip-track-67466-default-rtdb.firebaseio.com/'
+    'databaseURL': 'https://trip-55282-default-rtdb.firebaseio.com/'
 })
 
 # Reference to the Realtime Database
