@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-jpo5@bb42@=sjepc@304^4bf&43jr#g=kkw#rq(4*2xakcj^jc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'trip-track-backend.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
