@@ -5,15 +5,25 @@ from dotenv import load_dotenv
 import base64
 import json
 
+# Local env usage
+######################################################
+# load_dotenv()
 
-load_dotenv()
+# firebase_credentials_base64 = os.getenv("FIREBASE_CREDENTIALS")
+# firebase_credentials_json = base64.b64decode(firebase_credentials_base64).decode('utf-8')
 
-firebase_credentials_base64 = os.getenv("FIREBASE_CREDENTIALS")
-firebase_credentials_json = base64.b64decode(firebase_credentials_base64).decode('utf-8')
+# # Convert the JSON string back to a dictionary
+# firebase_credentials = json.loads(firebase_credentials_json)
+#######################################################
+#Production env usage
+######################################################
+# Path to the secret file on Render
+firebase_credentials_path = '/etc/secrets/trip-track-67466-firebase-adminsdk-fbsvc-e650a96815.json'
+#######################################################
 
-# Convert the JSON string back to a dictionary
-firebase_credentials = json.loads(firebase_credentials_json)
-
+# Load the Firebase credentials from the secret file
+with open(firebase_credentials_path, 'r') as f:
+    firebase_credentials = json.load(f)
 
 
 # Initialize the Firebase Admin SDK
