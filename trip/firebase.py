@@ -1,15 +1,25 @@
 import os
 import firebase_admin
 from firebase_admin import credentials, db
+from dotenv import load_dotenv
+import base64
+import json
 
-# Path to the serviceAccountKey.json file
-current_directory = os.path.dirname(os.path.abspath(__file__))
-json_path = os.path.join(current_directory, 'trip-track-67466-firebase-adminsdk-fbsvc-e650a96815.json')
+
+load_dotenv()
+
+firebase_credentials_base64 = os.getenv("FIREBASE_CREDENTIALS")
+firebase_credentials_json = base64.b64decode(firebase_credentials_base64).decode('utf-8')
+
+# Convert the JSON string back to a dictionary
+firebase_credentials = json.loads(firebase_credentials_json)
+
+
 
 # Initialize the Firebase Admin SDK
-cred = credentials.Certificate(json_path)
+cred = credentials.Certificate(firebase_credentials)
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://trip-track-67466-default-rtdb.firebaseio.com/'  # Replace with your Firebase database URL
+    'databaseURL': 'https://trip-track-67466-default-rtdb.firebaseio.com/'
 })
 
 # Reference to the Realtime Database
